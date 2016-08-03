@@ -1,0 +1,175 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module sub_bytes</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>sub_bytes</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:sub_bytes.sage">sub_bytes.sage</a></font></td></tr></table>
+    <p><tt>#&nbsp;*****************************************************************<br>
+#&nbsp;&nbsp;Copyright&nbsp;2016&nbsp;MIT&nbsp;Lincoln&nbsp;Laboratory&nbsp;&nbsp;<br>
+#&nbsp;&nbsp;Project:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CryptoSynth<br>
+#&nbsp;&nbsp;Authors:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Merrielle&nbsp;Spain<br>
+#&nbsp;&nbsp;Description:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;generates&nbsp;SubBytes.<br>
+#&nbsp;&nbsp;THE&nbsp;SOFTWARE&nbsp;IS&nbsp;PROVIDED&nbsp;TO&nbsp;YOU&nbsp;ON&nbsp;AN&nbsp;"AS&nbsp;IS"&nbsp;BASIS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+#&nbsp;<br>
+#&nbsp;&nbsp;Modifications:<br>
+#&nbsp;&nbsp;Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Modification<br>
+#&nbsp;&nbsp;----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;------------<br>
+#&nbsp;&nbsp;29&nbsp;January&nbsp;2016&nbsp;&nbsp;&nbsp;MS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Original&nbsp;Version<br>
+#&nbsp;*****************************************************************</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-apply_affine"><strong>apply_affine</strong></a>(affine, x_vec)</dt><dd><tt>Applies&nbsp;affine&nbsp;transformation.<br>
+&nbsp;<br>
+Applies&nbsp;matrix_a*x+vector_b&nbsp;to&nbsp;a&nbsp;vector&nbsp;over&nbsp;GF(2).&nbsp;<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;affine:&nbsp;A&nbsp;tuple&nbsp;of&nbsp;4&nbsp;matrices&nbsp;representing&nbsp;affine&nbsp;transformations&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrix_a*x+vector_b&nbsp;and&nbsp;matrix_a_inverse*x+vector_b_inverse&nbsp;as:&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrix_a:&nbsp;An&nbsp;8x8&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector_b:&nbsp;An&nbsp;8x1&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrix_a_inverse:&nbsp;An&nbsp;8x8&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector_b_inverse:&nbsp;An&nbsp;8x1&nbsp;matrix&nbsp;over&nbsp;GF(2).&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x_vec:&nbsp;An&nbsp;8x1&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;8x1&nbsp;matrix&nbsp;over&nbsp;GF(2).</tt></dd></dl>
+ <dl><dt><a name="-apply_affine_inv"><strong>apply_affine_inv</strong></a>(affine, x_vec)</dt><dd><tt>Applies&nbsp;inverse&nbsp;affine&nbsp;transformation.<br>
+&nbsp;<br>
+Applies&nbsp;matrix_a_inverse*x+vector_b_inverse&nbsp;to&nbsp;a&nbsp;vector&nbsp;over&nbsp;GF(2).&nbsp;<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;affine:&nbsp;A&nbsp;tuple&nbsp;of&nbsp;4&nbsp;matrices&nbsp;representing&nbsp;affine&nbsp;transformations&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrix_a*x+vector_b&nbsp;and&nbsp;matrix_a_inverse*x+vector_b_inverse&nbsp;as:&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrix_a:&nbsp;An&nbsp;8x8&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector_b:&nbsp;An&nbsp;8x1&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrix_a_inverse:&nbsp;An&nbsp;8x8&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector_b_inverse:&nbsp;An&nbsp;8x1&nbsp;matrix&nbsp;over&nbsp;GF(2).&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;An&nbsp;8x1&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;8x1&nbsp;matrix&nbsp;over&nbsp;GF(2).</tt></dd></dl>
+ <dl><dt><a name="-build_sub_bytes"><strong>build_sub_bytes</strong></a>(field, affine)</dt><dd><tt>Builds&nbsp;SubBytes&nbsp;from&nbsp;Galois&nbsp;field&nbsp;and&nbsp;affine&nbsp;transformation.<br>
+&nbsp;<br>
+Builds&nbsp;sub_bytes&nbsp;by&nbsp;applying&nbsp;multiplicative&nbsp;inversion&nbsp;in&nbsp;field&nbsp;and&nbsp;<br>
+affine&nbsp;transformation.&nbsp;When&nbsp;used,&nbsp;sub_bytes[i]&nbsp;replaces&nbsp;the&nbsp;ith&nbsp;element&nbsp;of&nbsp;<br>
+GF(2^8).<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;field:&nbsp;A&nbsp;Galois&nbsp;field&nbsp;(GF)&nbsp;with&nbsp;2^8&nbsp;elements.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;affine:&nbsp;A&nbsp;tuple&nbsp;of&nbsp;4&nbsp;matrices&nbsp;representing&nbsp;affine&nbsp;transformations&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrix_a*x+vector_b&nbsp;and&nbsp;matrix_a_inverse*x+vector_b_inverse&nbsp;as:&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrix_a:&nbsp;An&nbsp;8x8&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector_b:&nbsp;An&nbsp;8x1&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrix_a_inverse:&nbsp;An&nbsp;8x8&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector_b_inverse:&nbsp;An&nbsp;8x1&nbsp;matrix&nbsp;over&nbsp;GF(2).&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;list&nbsp;of&nbsp;256&nbsp;elements&nbsp;of&nbsp;GF(2^8).</tt></dd></dl>
+ <dl><dt><a name="-build_sub_bytes_inv"><strong>build_sub_bytes_inv</strong></a>(field, affine)</dt><dd><tt>Builds&nbsp;inverse&nbsp;SubBytes&nbsp;from&nbsp;Galois&nbsp;field&nbsp;and&nbsp;affine&nbsp;transformation.<br>
+&nbsp;<br>
+Builds&nbsp;sub_bytes_inv&nbsp;by&nbsp;applying&nbsp;multiplicative&nbsp;inversion&nbsp;in&nbsp;field&nbsp;and&nbsp;<br>
+affine&nbsp;transformation.&nbsp;&nbsp;When&nbsp;used,&nbsp;sub_bytes_inv[i]&nbsp;replaces&nbsp;the&nbsp;ith&nbsp;element&nbsp;<br>
+of&nbsp;GF(2^8).&nbsp;&nbsp;<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;field:&nbsp;A&nbsp;Galois&nbsp;field&nbsp;(GF)&nbsp;with&nbsp;2^8&nbsp;elements.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;affine:&nbsp;A&nbsp;tuple&nbsp;of&nbsp;4&nbsp;matrices&nbsp;representing&nbsp;affine&nbsp;transformations&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrix_a*x+vector_b&nbsp;and&nbsp;matrix_a_inverse*x+vector_b_inverse&nbsp;as:&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrix_a:&nbsp;An&nbsp;8x8&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector_b:&nbsp;An&nbsp;8x1&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrix_a_inverse:&nbsp;An&nbsp;8x8&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector_b_inverse:&nbsp;An&nbsp;8x1&nbsp;matrix&nbsp;over&nbsp;GF(2).&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;list&nbsp;of&nbsp;256&nbsp;elements&nbsp;of&nbsp;GF(2^8).</tt></dd></dl>
+ <dl><dt><a name="-coeff2poly"><strong>coeff2poly</strong></a>(field, x_vec)</dt><dd><tt>Transforms&nbsp;vector&nbsp;to&nbsp;polynomial&nbsp;representation.<br>
+&nbsp;<br>
+Transforms&nbsp;a&nbsp;vector&nbsp;over&nbsp;GF(2)&nbsp;to&nbsp;an&nbsp;element&nbsp;of&nbsp;GF(2^8).<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;field:&nbsp;A&nbsp;Galois&nbsp;field&nbsp;(GF)&nbsp;with&nbsp;2^8&nbsp;elements.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x_vec:&nbsp;An&nbsp;8x1&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;element&nbsp;of&nbsp;GF(2^8).</tt></dd></dl>
+ <dl><dt><a name="-gen_aes_affine"><strong>gen_aes_affine</strong></a>()</dt><dd><tt>Generates&nbsp;AES&nbsp;affine&nbsp;transformation.<br>
+&nbsp;<br>
+Generates&nbsp;AES&nbsp;affine&nbsp;transformation&nbsp;that&nbsp;combines&nbsp;multiplication&nbsp;with&nbsp;a&nbsp;<br>
+matrix&nbsp;and&nbsp;addition&nbsp;with&nbsp;a&nbsp;vector,&nbsp;both&nbsp;in&nbsp;GF(2).&nbsp;It&nbsp;also&nbsp;calculates&nbsp;the&nbsp;<br>
+inverse&nbsp;transformation.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;tuple&nbsp;of&nbsp;4&nbsp;matrices&nbsp;representing&nbsp;affine&nbsp;transformations&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrix_a*x+vector_b&nbsp;and&nbsp;matrix_a_inverse*x+vector_b_inverse&nbsp;as:&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrix_a:&nbsp;An&nbsp;8x8&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector_b:&nbsp;An&nbsp;8x1&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrix_a_inverse:&nbsp;An&nbsp;8x8&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector_b_inverse:&nbsp;An&nbsp;8x1&nbsp;matrix&nbsp;over&nbsp;GF(2).</tt></dd></dl>
+ <dl><dt><a name="-gen_aes_field"><strong>gen_aes_field</strong></a>()</dt><dd><tt>Generates&nbsp;the&nbsp;AES&nbsp;field.<br>
+&nbsp;<br>
+Generates&nbsp;a&nbsp;Galois&nbsp;field&nbsp;of&nbsp;size&nbsp;2^8&nbsp;with&nbsp;the&nbsp;AES&nbsp;modulus,&nbsp;x^8+x^4+x^3+x+1.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;Galois&nbsp;field&nbsp;(GF)&nbsp;with&nbsp;2^8&nbsp;elements.</tt></dd></dl>
+ <dl><dt><a name="-gen_random_affine"><strong>gen_random_affine</strong></a>()</dt><dd><tt>Generates&nbsp;a&nbsp;random&nbsp;affine&nbsp;transformation.<br>
+&nbsp;<br>
+Generates&nbsp;an&nbsp;random&nbsp;invertible&nbsp;affine&nbsp;transformation&nbsp;that&nbsp;combines&nbsp;<br>
+multiplication&nbsp;with&nbsp;a&nbsp;matrix&nbsp;and&nbsp;addition&nbsp;with&nbsp;a&nbsp;vector,&nbsp;both&nbsp;in&nbsp;GF(2).&nbsp;It&nbsp;<br>
+also&nbsp;calculates&nbsp;the&nbsp;inverse&nbsp;transformation.<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;tuple&nbsp;of&nbsp;4&nbsp;matrices&nbsp;representing&nbsp;affine&nbsp;transformations&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrix_a*x+vector_b&nbsp;and&nbsp;matrix_a_inverse*x+vector_b_inverse&nbsp;as:&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrix_a:&nbsp;An&nbsp;8x8&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector_b:&nbsp;An&nbsp;8x1&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrix_a_inverse:&nbsp;An&nbsp;8x8&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector_b_inverse:&nbsp;An&nbsp;8x1&nbsp;matrix&nbsp;over&nbsp;GF(2).</tt></dd></dl>
+ <dl><dt><a name="-gen_random_field"><strong>gen_random_field</strong></a>()</dt><dd><tt>Generates&nbsp;a&nbsp;random&nbsp;field.<br>
+&nbsp;<br>
+Generates&nbsp;a&nbsp;random&nbsp;Galois&nbsp;field&nbsp;of&nbsp;size&nbsp;2^8&nbsp;with&nbsp;a&nbsp;random&nbsp;modulus.&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;Galois&nbsp;field&nbsp;(GF)&nbsp;with&nbsp;2^8&nbsp;elements.</tt></dd></dl>
+ <dl><dt><a name="-inverse_el"><strong>inverse_el</strong></a>(x)</dt><dd><tt>Computes&nbsp;the&nbsp;inverse&nbsp;element.<br>
+&nbsp;<br>
+Calculates&nbsp;the&nbsp;inverse&nbsp;element&nbsp;using&nbsp;Fermat's&nbsp;Little&nbsp;Theorem.&nbsp;We&nbsp;assign&nbsp;0&nbsp;as&nbsp;<br>
+its&nbsp;own&nbsp;multiplicative&nbsp;inverse,&nbsp;as&nbsp;specified&nbsp;by&nbsp;AES.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;An&nbsp;element&nbsp;of&nbsp;GF(2^8).<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;element&nbsp;of&nbsp;GF(2^8).</tt></dd></dl>
+ <dl><dt><a name="-not_any_fixed_points"><strong>not_any_fixed_points</strong></a>(sub_bytes)</dt><dd><tt>Checks&nbsp;SubBytes&nbsp;for&nbsp;fixed&nbsp;and&nbsp;anti-fixed&nbsp;points.<br>
+&nbsp;<br>
+Checks&nbsp;sub_bytes&nbsp;for&nbsp;outputs&nbsp;that&nbsp;match&nbsp;their&nbsp;input&nbsp;or&nbsp;the&nbsp;two's&nbsp;complement&nbsp;<br>
+of&nbsp;their&nbsp;input.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;sub_bytes:&nbsp;A&nbsp;list&nbsp;of&nbsp;256&nbsp;elements&nbsp;of&nbsp;GF(2^8).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;bool&nbsp;True&nbsp;if&nbsp;sub_bytes&nbsp;has&nbsp;neither&nbsp;fixed&nbsp;nor&nbsp;anti-fixed&nbsp;points,&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+ <dl><dt><a name="-poly2coeff"><strong>poly2coeff</strong></a>(poly)</dt><dd><tt>Transforms&nbsp;polynomial&nbsp;to&nbsp;vector&nbsp;representation.<br>
+&nbsp;&nbsp;<br>
+Transforms&nbsp;an&nbsp;element&nbsp;of&nbsp;GF(2^8)&nbsp;to&nbsp;a&nbsp;vector&nbsp;over&nbsp;GF(2).<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;poly:&nbsp;An&nbsp;element&nbsp;of&nbsp;GF(2^8).<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;8x1&nbsp;matrix&nbsp;over&nbsp;GF(2).</tt></dd></dl>
+</td></tr></table>
+</body></html>

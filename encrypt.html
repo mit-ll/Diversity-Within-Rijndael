@@ -1,0 +1,79 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module encrypt</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>encrypt</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:encrypt.sage">encrypt.sage</a></font></td></tr></table>
+    <p><tt>#&nbsp;*****************************************************************<br>
+#&nbsp;&nbsp;Copyright&nbsp;2016&nbsp;MIT&nbsp;Lincoln&nbsp;Laboratory&nbsp;&nbsp;<br>
+#&nbsp;&nbsp;Project:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CryptoSynth<br>
+#&nbsp;&nbsp;Authors:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Merrielle&nbsp;Spain<br>
+#&nbsp;&nbsp;Description:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;encrypts&nbsp;and&nbsp;decrypts&nbsp;with&nbsp;a&nbsp;128-bit&nbsp;key.<br>
+#&nbsp;&nbsp;THE&nbsp;SOFTWARE&nbsp;IS&nbsp;PROVIDED&nbsp;TO&nbsp;YOU&nbsp;ON&nbsp;AN&nbsp;"AS&nbsp;IS"&nbsp;BASIS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+#&nbsp;<br>
+#<br>
+#&nbsp;&nbsp;Modifications:<br>
+#&nbsp;&nbsp;Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Modification<br>
+#&nbsp;&nbsp;----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;------------<br>
+#&nbsp;&nbsp;29&nbsp;January&nbsp;2016&nbsp;&nbsp;&nbsp;MS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Original&nbsp;Version<br>
+#&nbsp;*****************************************************************</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-decrypt"><strong>decrypt</strong></a>(field, affine, mix_columns, shifts, ct, cipher_key)</dt><dd><tt>Decrypts&nbsp;one&nbsp;block&nbsp;of&nbsp;ciphertext&nbsp;under&nbsp;specified&nbsp;Rijndael&nbsp;variant.<br>
+&nbsp;<br>
+Decrypts&nbsp;ct&nbsp;under&nbsp;cipher_key&nbsp;using&nbsp;SubBytes&nbsp;as&nbsp;specified&nbsp;by&nbsp;multiplicative&nbsp;<br>
+inversion&nbsp;in&nbsp;field&nbsp;and&nbsp;affine&nbsp;transformation,&nbsp;MixColumns&nbsp;as&nbsp;specified&nbsp;by&nbsp;<br>
+mix_columns,&nbsp;and&nbsp;ShiftRows&nbsp;as&nbsp;specified&nbsp;by&nbsp;shifts.&nbsp;Returns&nbsp;plaintext.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;field:&nbsp;A&nbsp;Galois&nbsp;field&nbsp;(GF)&nbsp;with&nbsp;2^8&nbsp;elements.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;affine:&nbsp;A&nbsp;tuple&nbsp;of&nbsp;4&nbsp;matrices&nbsp;representing&nbsp;affine&nbsp;transformations&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrix_a*x+vector_b&nbsp;and&nbsp;matrix_a_inverse*x+vector_b_inverse&nbsp;as:&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrix_a:&nbsp;An&nbsp;8x8&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector_b:&nbsp;An&nbsp;8x1&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrix_a_inverse:&nbsp;An&nbsp;8x8&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector_b_inverse:&nbsp;An&nbsp;8x1&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mix_columns:&nbsp;A&nbsp;tuple&nbsp;of&nbsp;2&nbsp;4x4&nbsp;matrices&nbsp;over&nbsp;GF(2^8).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;shifts:&nbsp;A&nbsp;tuple&nbsp;of&nbsp;2&nbsp;lists:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;list&nbsp;of&nbsp;4&nbsp;lists&nbsp;of&nbsp;4&nbsp;integers&nbsp;describing&nbsp;horizontal&nbsp;shift.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;list&nbsp;of&nbsp;4&nbsp;lists&nbsp;of&nbsp;4&nbsp;integers&nbsp;describing&nbsp;vertical&nbsp;shift.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ct:&nbsp;A&nbsp;list&nbsp;of&nbsp;16&nbsp;integers&nbsp;representing&nbsp;one&nbsp;ciphertext&nbsp;block.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cipher_key:&nbsp;A&nbsp;list&nbsp;of&nbsp;16&nbsp;integers&nbsp;representing&nbsp;the&nbsp;cipher&nbsp;key.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;list&nbsp;of&nbsp;16&nbsp;integers&nbsp;representing&nbsp;one&nbsp;plaintext&nbsp;block.</tt></dd></dl>
+ <dl><dt><a name="-encrypt"><strong>encrypt</strong></a>(field, affine, mix_columns, shifts, pt, cipher_key)</dt><dd><tt>Encrypts&nbsp;one&nbsp;block&nbsp;of&nbsp;plaintext&nbsp;under&nbsp;specified&nbsp;Rijndael&nbsp;variant.<br>
+&nbsp;<br>
+Encrypts&nbsp;pt&nbsp;under&nbsp;cipher_key&nbsp;using&nbsp;SubBytes&nbsp;as&nbsp;specified&nbsp;by&nbsp;multiplicative&nbsp;<br>
+inversion&nbsp;in&nbsp;field&nbsp;and&nbsp;affine&nbsp;transformation,&nbsp;MixColumns&nbsp;as&nbsp;specified&nbsp;by&nbsp;<br>
+mix_columns,&nbsp;and&nbsp;ShiftRows&nbsp;as&nbsp;specified&nbsp;by&nbsp;shifts.&nbsp;Returns&nbsp;ciphertext.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;field:&nbsp;A&nbsp;Galois&nbsp;field&nbsp;(GF)&nbsp;with&nbsp;2^8&nbsp;elements.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;affine:&nbsp;A&nbsp;tuple&nbsp;of&nbsp;4&nbsp;matrices&nbsp;representing&nbsp;affine&nbsp;transformations&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrix_a*x+vector_b&nbsp;and&nbsp;matrix_a_inverse*x+vector_b_inverse&nbsp;as:&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrix_a:&nbsp;An&nbsp;8x8&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector_b:&nbsp;An&nbsp;8x1&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matrix_a_inverse:&nbsp;An&nbsp;8x8&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;vector_b_inverse:&nbsp;An&nbsp;8x1&nbsp;matrix&nbsp;over&nbsp;GF(2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mix_columns:&nbsp;A&nbsp;tuple&nbsp;of&nbsp;2&nbsp;4x4&nbsp;matrices&nbsp;over&nbsp;GF(2^8).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;shifts:&nbsp;A&nbsp;tuple&nbsp;of&nbsp;2&nbsp;lists:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;list&nbsp;of&nbsp;4&nbsp;lists&nbsp;of&nbsp;4&nbsp;integers&nbsp;describing&nbsp;horizontal&nbsp;shift.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;list&nbsp;of&nbsp;4&nbsp;lists&nbsp;of&nbsp;4&nbsp;integers&nbsp;describing&nbsp;vertical&nbsp;shift.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pt:&nbsp;A&nbsp;list&nbsp;of&nbsp;16&nbsp;integers&nbsp;representing&nbsp;one&nbsp;plaintext&nbsp;block.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cipher_key:&nbsp;A&nbsp;list&nbsp;of&nbsp;16&nbsp;integers&nbsp;representing&nbsp;the&nbsp;cipher&nbsp;key.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;list&nbsp;of&nbsp;16&nbsp;integers&nbsp;representing&nbsp;one&nbsp;ciphertext&nbsp;block.</tt></dd></dl>
+</td></tr></table>
+</body></html>

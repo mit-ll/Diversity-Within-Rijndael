@@ -1,0 +1,57 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module test_mix_columns</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>test_mix_columns</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:test_mix_columns.sage">test_mix_columns.sage</a></font></td></tr></table>
+    <p><tt>#&nbsp;*****************************************************************<br>
+#&nbsp;&nbsp;Copyright&nbsp;2016&nbsp;MIT&nbsp;Lincoln&nbsp;Laboratory&nbsp;&nbsp;<br>
+#&nbsp;&nbsp;Project:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CryptoSynth<br>
+#&nbsp;&nbsp;Authors:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Merrielle&nbsp;Spain<br>
+#&nbsp;&nbsp;Description:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;tests&nbsp;MixColumns.<br>
+#&nbsp;&nbsp;THE&nbsp;SOFTWARE&nbsp;IS&nbsp;PROVIDED&nbsp;TO&nbsp;YOU&nbsp;ON&nbsp;AN&nbsp;"AS&nbsp;IS"&nbsp;BASIS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+#&nbsp;<br>
+#&nbsp;&nbsp;Modifications:<br>
+#&nbsp;&nbsp;Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Modification<br>
+#&nbsp;&nbsp;----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;------------<br>
+#&nbsp;&nbsp;29&nbsp;January&nbsp;2016&nbsp;&nbsp;&nbsp;MS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Original&nbsp;Version<br>
+#&nbsp;*****************************************************************</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-test_mix_columns"><strong>test_mix_columns</strong></a>()</dt><dd><tt>Tests&nbsp;functions&nbsp;that&nbsp;builds&nbsp;MixColumns&nbsp;matrices.<br>
+&nbsp;<br>
+Tests&nbsp;invertibility&nbsp;and&nbsp;inversion&nbsp;of&nbsp;mix_columns&nbsp;matrices&nbsp;on&nbsp;AES&nbsp;and&nbsp;random&nbsp;<br>
+matrices.</tt></dd></dl>
+ <dl><dt><a name="-test_mix_columns_determinant"><strong>test_mix_columns_determinant</strong></a>(mat_tuple)</dt><dd><tt>Tests&nbsp;whether&nbsp;determinants&nbsp;are&nbsp;non-zero.<br>
+&nbsp;<br>
+Tests&nbsp;whether&nbsp;determinants&nbsp;of&nbsp;both&nbsp;matrices&nbsp;in&nbsp;mat_tuple&nbsp;are&nbsp;non-zero.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mat_tuple:&nbsp;A&nbsp;tuple&nbsp;of&nbsp;2&nbsp;4x4&nbsp;matrices&nbsp;over&nbsp;GF(2^8).<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;bool&nbsp;True&nbsp;if&nbsp;both&nbsp;matrix&nbsp;determinants&nbsp;are&nbsp;non-zero,&nbsp;and&nbsp;False&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;otherwise.</tt></dd></dl>
+ <dl><dt><a name="-test_mix_columns_inversion"><strong>test_mix_columns_inversion</strong></a>(mat_tuple)</dt><dd><tt>Tests&nbsp;whether&nbsp;MixColumns&nbsp;matrices&nbsp;are&nbsp;inverses.<br>
+&nbsp;<br>
+Tests&nbsp;whether&nbsp;pair&nbsp;of&nbsp;matrices&nbsp;in&nbsp;mat_tuple&nbsp;are&nbsp;inverses&nbsp;by&nbsp;checking&nbsp;whether&nbsp;<br>
+their&nbsp;product&nbsp;is&nbsp;the&nbsp;identity&nbsp;matrix.<br>
+&nbsp;<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mat_tuple:&nbsp;A&nbsp;tuple&nbsp;of&nbsp;2&nbsp;4x4&nbsp;matrices&nbsp;over&nbsp;GF(2^8).<br>
+&nbsp;<br>
+Returns:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;bool&nbsp;True&nbsp;if&nbsp;matrices&nbsp;are&nbsp;inverses,&nbsp;and&nbsp;False&nbsp;otherwise.</tt></dd></dl>
+</td></tr></table>
+</body></html>
