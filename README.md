@@ -39,6 +39,11 @@ Maximal linear bias: 16
 Maximal difference probability: 4
 ```
 
+# Citing
+
+Please cite this code as the following publication:  
+Spain, M., Varia, M.: Diversity Within the Rijndael Design Principles for Resistance to Differential Power Analysis. In: International Conference on Cryptology and Network Security. Springer (2016)
+
 # Copyright
 
 Copyright 2016 Massachusetts Institute of Technology  
